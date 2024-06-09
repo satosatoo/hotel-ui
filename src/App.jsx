@@ -5,6 +5,8 @@ import MainLayout from './layouts/MainLayout';
 import RoomsPage from './pages/RoomsPage';
 import FacilitiesPage from './pages/FacilitiesPage';
 import BookingPage from './pages/BookingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
 
@@ -14,6 +16,8 @@ const App = () => {
       <Route path='/rooms' element={<RoomsPage />}/>
       <Route path='/facilities' element={<FacilitiesPage />}/>
       <Route path='/booking' element={<BookingPage />}/>
+      <Route path='/login' element={<LoginPage />}/>
+      <Route path='/register' element={<RegisterPage />}/>
     </Route>
   ));
 
