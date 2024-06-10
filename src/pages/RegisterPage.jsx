@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserService from "../services/UserService";
 
 const RegisterPage = () => {
@@ -13,7 +13,6 @@ const RegisterPage = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +48,6 @@ const RegisterPage = () => {
     return newErrors;
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -57,7 +55,8 @@ const RegisterPage = () => {
       const data = await UserService.registerUser(formData);
       if (data.token) {
         localStorage.setItem('token', data.token);
-        navigate('/');
+        localStorage.setItem('role', data.role)
+        window.location.href = '/';
       }else {
         setErrors(data.message);
       }

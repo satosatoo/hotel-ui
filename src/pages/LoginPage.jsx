@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import UserService from "../services/UserService";
 
 const LoginPage = () => {
@@ -10,7 +10,6 @@ const LoginPage = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +42,7 @@ const LoginPage = () => {
       if (data.token) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
-        navigate('/');
+        window.location.href = '/';
       }else {
         setErrors(data.message);
       }

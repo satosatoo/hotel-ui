@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import RoomSearch from '../components/RoomSearch';
 import RoomList from '../components/RoomList';
 import BookingForm from '../components/BookingForm';
+import UserService from '../services/UserService';
 
 const BookingPage = () => {
   const [availableRooms, setAvailableRooms] = useState([]);
@@ -12,22 +13,19 @@ const BookingPage = () => {
   });
   const [selectedRoom, setSelectedRoom] = useState(null);
 
-  const getAvailableRooms = (search) => {
-      const input = search;
-      const queryParams = new URLSearchParams({
-        checkInDate: input.checkIn,
-        checkOutDate: input.checkOut,
-        people: input.people
-      }).toString();
-  
-      fetch(`/api/room/available?${queryParams}`).then(res => res.json()).then(data => {
-        if (Array.isArray(data)) {
-          setAvailableRooms(data);
-        } else {
-          console.error('Data is not an array:', data);
-        }
-      }).catch(error => console.error('Error:', error));
-  };
+  const getAvailableRooms = async (search) => {
+    const token = localStorage.getItem('token');
+    try {
+      const response = await UserService.getAvailableRooms(token, search);
+      if (Array.isArray(response)) {
+        setAvailableRooms(response);
+      } else {
+        console.error('Data is not an array:', response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching available rooms:', error);
+    }
+  }
 
 
   const handleRoomSearch = (search) => {
@@ -45,22 +43,18 @@ const BookingPage = () => {
 
   const createReservation = async (room, reservation) => {
     try {
-      const response = await fetch(`/api/reservation/${room.roomId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(reservation)
-      });
+      const token = localStorage.getItem('token');
+      const response = await UserService.createReservation(token, room, reservation);
+      
       if (response.ok) {
         console.log("Reservation created successfully");
       } else {
-        const errorMessage = await response.text();
-        throw new Error(`Failed to create reservation: ${errorMessage}`);
+        const errorDetails = await response.json();
+        throw new Error(`Failed to create reservation: ${JSON.stringify(errorDetails)}`);
       }
     } catch (error) {
-      console.error('Error:', error);
-      console.log("Failed to create reservation");
+      console.error('Error:', error.message);
+      console.error('Full error object:', error);
     }
   }
 

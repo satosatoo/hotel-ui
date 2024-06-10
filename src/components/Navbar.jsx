@@ -1,26 +1,36 @@
 import React from 'react'
 import logo from '../assets/images/logo-home.png'
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import UserService from '../services/UserService';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 50) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    setIsAuthenticated(UserService.isAuthenticated());
+  }, [navigate]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setIsScrolled(offset > 50);
+    }
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleLogout = () => {
+    const confirmDelete = window.confirm('Are you sure you want to logout this user?');
+    if (confirmDelete) {
+      UserService.logout();
+      setIsAuthenticated(false);
+    }
+  };
 
   return (
     <>
@@ -32,7 +42,7 @@ const Navbar = () => {
             <Link to={'/rooms'}>Rooms</Link>
             <Link to={'/facilities'}>Facilities</Link>
             <Link to={'/booking'}>Booking</Link>
-            <Link to={'/login'}>Log in</Link>
+            {isAuthenticated ? <><Link to={'/profile'}>Profile</Link> <Link to={'/'} onClick={handleLogout}>Log out</Link></> : <Link to={'/login'}>Log in</Link>}
           </div>
         </div>
       </nav>

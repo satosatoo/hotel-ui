@@ -17,6 +17,7 @@ export default {
         'custom-purple': '#756aad',
         'custom-purple-hover': '#805bc9',
         'dusty-rose': '#a55959',
+        'dusty-rose-hover': '#8f4747',
         // bg-gray-500 очень хорошо подходит для светлой темы
       },
       boxShadow: {

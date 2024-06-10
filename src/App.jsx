@@ -7,6 +7,7 @@ import FacilitiesPage from './pages/FacilitiesPage';
 import BookingPage from './pages/BookingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/booking' element={<BookingPage />}/>
       <Route path='/login' element={<LoginPage />}/>
       <Route path='/register' element={<RegisterPage />}/>
+      <Route path='/profile' element={<ProfilePage />}/>
     </Route>
   ));
 

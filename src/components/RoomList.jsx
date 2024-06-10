@@ -2,6 +2,9 @@ import React from 'react';
 import a1 from '../assets/images/garden-suite/a1.jpg';
 
 function RoomList({ rooms = [], onSelect }) {
+  if (!Array.isArray(rooms)) {
+    return <div>No rooms available</div>;
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16">
       {rooms.map((room, index) => (
