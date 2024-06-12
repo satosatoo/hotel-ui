@@ -34,9 +34,9 @@ function BookingForm({ room, search, onBack, onSubmit }) {
       checkInDate: search.checkIn,
       checkOutDate: search.checkOut,
       policyAcknowledged: policy,
-      firstName,
-      lastName,
-      phone,
+      firstname: firstName,
+      lastname: lastName,
+      phoneNumber: phone,
       cardNumber,
       cvv
     }

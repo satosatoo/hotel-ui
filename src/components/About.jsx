@@ -8,7 +8,7 @@ import { SiPrivateinternetaccess } from "react-icons/si";
 const About = () => {
   return (
     <>
-      <div className="bg-dark-grey text-white p-8 mt-28">
+      <div className="bg-dark-grey text-white p-8 mt-16">
       <h1 className="text-center text-4xl font-bold mb-16">ABOUT US</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
         <div className="text-center w-[30vw] text-[1em] leading-[1.5em] font-extralight pt-[0] px-[4vw] pb-[4vw] border-r-[2px] border-b-[2px] border-l-[0] border-solid">

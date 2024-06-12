@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import UserService from '../services/UserService';
 import classNames from 'classnames';
 
 const ProfilePage = () => {
-  const [profile, setProfile] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
+  const [userProfile, setUserProfile] = useState({
+    firstname: '',
+    lastname: '',
+    phoneNumber: '',
     email: '',
     password: '',
   });
@@ -23,11 +22,11 @@ const ProfilePage = () => {
     try {
       const token = localStorage.getItem('token');
       const profile = await UserService.getProfile(token);
-      setProfile({
-        firstName: profile.firstname || '',
-        lastName: profile.lastname || '',
-        phone: profile.phoneNumber || '',
-        email: profile.email || '',
+      setUserProfile({
+        firstname: profile.firstname || '',
+        lastname: profile.lastname || '',
+        phoneNumber: profile.phoneNumber || '',
+        email: profile.email,
         password: '',
       });
       console.log(profile);
@@ -48,17 +47,27 @@ const ProfilePage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProfile((prevProfile) => ({
-      ...prevProfile,
+    setUserProfile((prevUserProfile) => ({
+      ...prevUserProfile,
       [name]: value,
     }));
   };
 
   const handleSave = async () => {
     try {
-      console.log('Saving profile...', profile);
+      const prof = {
+        firstname: userProfile.firstname,
+        lastname: userProfile.lastname,
+        phoneNumber: userProfile.phoneNumber,
+        email: userProfile.email
+      };
+      if (userProfile.password) {
+        prof.password = userProfile.password;
+      }
+
+      console.log('Saving profile...', prof);
       const token = localStorage.getItem('token');
-      await UserService.updateProfile(token, profile);
+      await UserService.updateProfile(token, prof);
       console.log('Profile saved successfully.');
       setIsEditing(false);
     } catch (error) {
@@ -76,8 +85,8 @@ const ProfilePage = () => {
             <label className="block text-white text-lg font-bold mb-2">First Name:</label>
             <input
               type="text"
-              name="firstName"
-              value={profile.firstName}
+              name="firstname"
+              value={userProfile.firstname}
               onChange={handleChange}
               disabled={!isEditing}
               className={classNames(
@@ -94,8 +103,8 @@ const ProfilePage = () => {
             <label className="block text-white text-lg font-bold mb-2">Last Name:</label>
             <input
               type="text"
-              name="lastName"
-              value={profile.lastName}
+              name="lastname"
+              value={userProfile.lastname}
               onChange={handleChange}
               disabled={!isEditing}
               className={classNames(
@@ -112,8 +121,8 @@ const ProfilePage = () => {
             <label className="block text-white text-lg font-bold mb-2">Phone:</label>
             <input
               type="text"
-              name="phone"
-              value={profile.phone}
+              name="phoneNumber"
+              value={userProfile.phoneNumber}
               onChange={handleChange}
               disabled={!isEditing}
               className={classNames(
@@ -131,14 +140,14 @@ const ProfilePage = () => {
             <input
               type="email"
               name="email"
-              value={profile.email}
+              value={userProfile.email}
               onChange={handleChange}
-              disabled={!isEditing}
+              disabled
               className={classNames(
                 "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-lg",
                 {
                   "text-gray-300": !isEditing,
-                  "bg-gray-200": isEditing,
+                  "bg-gray-400": isEditing,
                   "text-dark-grey": isEditing
                 }
               )}
@@ -150,7 +159,7 @@ const ProfilePage = () => {
               <input
                 type="password"
                 name="password"
-                value={profile.password}
+                value={userProfile.password}
                 onChange={handleChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-dark-grey leading-tight focus:outline-none focus:shadow-outline text-lg bg-gray-200"
               />
