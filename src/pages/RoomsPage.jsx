@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Room from '../components/Room';
+import UserService from '../services/UserService';
 
 const RoomsPage = () => {
 
@@ -7,11 +8,9 @@ const RoomsPage = () => {
 
   useEffect(() => {
     const fetchRooms = async () => {
-      const apiUrl = '/api/room';
       try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        setRooms(data);
+        const rooms = await UserService.getRooms();
+        setRooms(rooms.data);
         console.log(data);
       } catch (error) {
         console.log("Error: " + error);

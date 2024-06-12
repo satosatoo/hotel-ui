@@ -82,6 +82,14 @@ class UserService {
     });
   };
 
+  static async getExtras() {
+    return await axios.get('/api/extra/');
+  }
+
+  static async getRooms() {
+    return await axios.get('/api/room/');
+  }
+
 
   static isAuthenticated() {
     return !!localStorage.getItem('token');
