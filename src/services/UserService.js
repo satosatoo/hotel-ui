@@ -82,6 +82,33 @@ class UserService {
     });
   };
 
+  static async createRoom(token, room) {
+    await axios.post('/api/room/', room, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async createRoomFacility(token, roomFacility) {
+    await axios.post('/api/room/facility/', roomFacility, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  // static async createAdmin(admin) {
+  //   try {
+  //     const response = await axios.post('/api/auth/register-admin', admin);
+  //     return response.data;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
+
+
+  
   static async getExtras() {
     return await axios.get('/api/extra/');
   }
@@ -89,6 +116,11 @@ class UserService {
   static async getRooms() {
     return await axios.get('/api/room/');
   }
+
+  static async getRoomFacilities() {
+    return await axios.get('/api/room/facility/');
+  }
+
 
 
   static isAuthenticated() {

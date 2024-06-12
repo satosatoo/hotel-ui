@@ -4,7 +4,7 @@ import im2 from '../assets/images/im2.jpg'
 import im3 from '../assets/images/im3.jpg'
 import im5 from '../assets/images/im6.jpg'
 import im6 from '../assets/images/im7.jpg'
-import About from '../components/About'
+import About from '../general/About'
 
 const HomePage = () => {
 

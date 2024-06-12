@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import RoomSearch from '../components/RoomSearch';
-import RoomList from '../components/RoomList';
-import BookingForm from '../components/BookingForm';
+import RoomSearch from '../room/RoomSearch';
+import RoomList from '../room/RoomList';
+import BookingForm from '../booking/BookingForm';
 import UserService from '../services/UserService';
 
 const BookingPage = () => {

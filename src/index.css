@@ -8,3 +8,78 @@ body {
     color: white;
 }
 
+.each-slide-effect-room > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    width: 1500px;
+    height: 800px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.each-slide-effect-facility > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    width: 1000px;
+    height: 500px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.each-slide-effect span {
+    padding: 20px;
+    font-size: 20px;
+    background: #efefef;
+    text-align: center;
+}
+
+.form-container-room {
+    max-height: 75vh; /* Adjust height as needed */
+    overflow-y: auto;
+  }
+
+.button-purple {
+    background-color: #756aad;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.25rem; 
+    width: 100%; 
+    font-size: 1.125rem;
+    line-height: 1.75rem; 
+    font-weight: 700; 
+    color: #ffffff; 
+    transition-duration: 200ms; 
+}
+
+.button-purple:hover {
+    background-color: #805bc9;
+    color: #C7D2FE; 
+}
+
+.button-dusty {
+    background-color: #a55959;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    border-radius: 0.25rem; 
+    width: 100%; 
+    font-size: 1.125rem;
+    line-height: 1.75rem; 
+    font-weight: 700; 
+    color: #ffffff; 
+    transition-duration: 200ms; 
+}
+
+.button-dusty:hover {
+    background-color: #8f4747;
+    color: #C7D2FE;
+}
+
+

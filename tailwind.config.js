@@ -22,7 +22,7 @@ export default {
       },
       boxShadow: {
         'custom-pink': 'rgba(93, 48, 133, 0.16) 0px 3px 6px, rgba(93, 48, 133, 0.23) 0px 3px 6px;',
-      }
+      },
     },
   },
   plugins: [],

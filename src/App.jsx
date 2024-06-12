@@ -1,13 +1,17 @@
 import React from 'react'
 import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import HomePage from './pages/HomePage'
 import MainLayout from './layouts/MainLayout';
-import RoomsPage from './pages/RoomsPage';
-import FacilitiesPage from './pages/FacilitiesPage';
-import BookingPage from './pages/BookingPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ProfilePage from './pages/ProfilePage';
+import HomePage from './general/HomePage';
+import RoomsPage from './room/RoomsPage';
+import FacilitiesPage from './extras/FacilitiesPage';
+import BookingPage from './booking/BookingPage';
+import LoginPage from './auth/LoginPage';
+import RegisterPage from './auth/RegisterPage';
+import ProfilePage from './general/ProfilePage';
+import RoomDetailsPage from './room/RoomDetailsPage';
+import FacilityDetailsPage from './extras/FacilityDetailsPage';
+import ManageRooms from './admin/ManageRooms';
+
 
 const App = () => {
 
@@ -20,6 +24,9 @@ const App = () => {
       <Route path='/login' element={<LoginPage />}/>
       <Route path='/register' element={<RegisterPage />}/>
       <Route path='/profile' element={<ProfilePage />}/>
+      <Route path='/room/details' element={<RoomDetailsPage />} />
+      <Route path='/facilities/details' element={<FacilityDetailsPage />}/>
+      <Route path='/manage/rooms' element={<ManageRooms />}/>
     </Route>
   ));
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Facility from '../components/Facility'
+import Facility from '../extras/Facility'
 import spa from '../assets/images/facilities/spa.jpg'
 import shop from '../assets/images/facilities/shop.jpg'
 import bsc from '../assets/images/facilities/bsc.jpg'
@@ -33,7 +33,7 @@ const FacilitiesPage = () => {
       <div className='pt-32 flex justify-center items-center flex-wrap gap-4'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-16">
           {allFacilities.map((facility, index) => (
-              <Facility image={images[index]} facility={facility}/>
+              <Facility key={index} image={images[index]} facility={facility}/>
           ))}
         </div>
       </div>

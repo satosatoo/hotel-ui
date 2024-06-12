@@ -1,9 +1,16 @@
 import React from 'react'
 import a1 from '../assets/images/garden-suite/a1.jpg'
+import { useNavigate } from 'react-router-dom';
 import a from '../assets/images/garden-suite/a.jpg'
 import b1 from '../assets/images/garden-suite/b1.jpg'
 
 const Room = ({ room, reverse }) => {
+  const navigate = useNavigate();
+
+  const handleMoreClick = () => {
+    navigate('/room/details', { state: { room } });
+  };
+
   return (
     reverse ? 
   <>
@@ -31,7 +38,7 @@ const Room = ({ room, reverse }) => {
 
           <div className="flex-grow"></div>
           <div className="relative flex flex-col w-full items-center pt-6 border-t-2">
-            <button className="bg-custom-white text-dark-grey text-lg py-2 px-4 rounded w-full duration-150 hover:bg-custom-purple cursor-pointer">BOOK NOW</button>
+            <button onClick={handleMoreClick} className="bg-custom-white text-dark-grey text-lg py-2 px-4 rounded w-full duration-150 hover:bg-custom-purple cursor-pointer">MORE</button>
           </div>
         </div>
 
@@ -73,7 +80,7 @@ const Room = ({ room, reverse }) => {
 
           <div className="flex-grow"></div>
           <div className="relative flex flex-col w-full items-center pt-6 border-t-2">
-            <button className="bg-custom-white text-dark-grey text-lg py-2 px-4 rounded w-full duration-100 hover:bg-custom-purple">BOOK NOW</button>
+            <button onClick={handleMoreClick} className="bg-custom-white text-dark-grey text-lg py-2 px-4 rounded w-full duration-100 hover:bg-custom-purple">MORE</button>
           </div>
         </div>
       </div>
