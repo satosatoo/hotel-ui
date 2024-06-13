@@ -3,6 +3,7 @@ import RoomForm from './RoomForm';
 import EditRoomForm from './EditRoomForm';
 import UserService from '../../services/UserService';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import RoomFacilityForm from './RoomFacilityForm';
 import RoomFacilitiesView from './RoomFacilitiesView';
 
@@ -14,6 +15,8 @@ const ManageRooms = () => {
   const [currentRoomId, setCurrentRoomId] = useState(null);
   const [showRoomFacilityForm, setShowRoomFacilityForm] = useState(false);
   const [showRoomFacilitiesView, setShowRoomFacilitiesView] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -120,6 +123,9 @@ const ManageRooms = () => {
   return (
     <div className="container mx-auto p-4 pt-32">
       <div className="flex justify-between mb-4 space-x-2">
+        <button onClick={() => navigate('/profile')} className="button-dusty">
+          Back
+        </button>
         <button onClick={addRoom} className="button-purple">
           Add Room
         </button>
@@ -199,7 +205,7 @@ const ManageRooms = () => {
 
       {showRoomFacilitiesView && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white rounded p-6 shadow-lg max-w-2xl w-full relative">
+          <div className="bg-dark-grey rounded p-6 shadow-lg max-w-2xl w-full relative">
             <button
               onClick={closeRoomFacilitiesView}
               className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"

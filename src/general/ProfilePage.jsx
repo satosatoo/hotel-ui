@@ -195,13 +195,16 @@ const ProfilePage = () => {
 
       {UserService.isAdmin() ? (
         <div className="bg-dark-grey shadow-md rounded-lg p-6 mb-6 max-w-md w-full">
-        <h2 className="text-2xl font-semibold mb-4 text-center">Admin Panel</h2>
-        <div>
-          <Link to='/manage/rooms' className='bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg'>
+        <h2 className="text-2xl font-semibold mb-6 text-center">Admin Panel</h2>
+        <div className="flex flex-col space-y-4">
+          <Link to='/manage/rooms' className='block bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg text-center'>
             Manage Rooms
           </Link>
-          <Link to='/manage/users' className='bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg'>
+          <Link to='/manage/users' className='block bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg text-center'>
             Manage Users
+          </Link>
+          <Link to='/manage/bookings' className='block bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg text-center'>
+            Manage Bookings
           </Link>
         </div>
       </div>

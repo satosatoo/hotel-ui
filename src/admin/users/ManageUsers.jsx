@@ -3,12 +3,15 @@ import UserForm from './UserForm';
 import EditUserForm from './EditUserForm';
 import UserService from '../../services/UserService';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [showUserForm, setShowUserForm] = useState(false);
   const [showEditUserForm, setShowEditUserForm] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -79,6 +82,9 @@ const ManageUsers = () => {
   return (
     <div className="container mx-auto p-4 pt-32">
       <div className="flex justify-between mb-4 space-x-2">
+        <button onClick={() => navigate('/profile')} className="button-dusty">
+          Back
+        </button>
         <button onClick={addUser} className="button-purple">
           Add Admin
         </button>

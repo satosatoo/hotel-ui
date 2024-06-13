@@ -162,6 +162,22 @@ class UserService {
     });
   };
 
+  static async deleteBooking(token, id) {
+    await axios.delete(`/api/reservation/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async createExtra(token, extra) {
+    await axios.post('/api/extra/', extra, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
   static async getExtras() {
     return await axios.get('/api/extra/');
   };
