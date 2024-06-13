@@ -74,7 +74,7 @@ class UserService {
   };
 
   static async updateProfile(token, profile) {
-    await axios.put('/api/user', profile, {
+    await axios.put('/api/user/', profile, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
@@ -98,47 +98,100 @@ class UserService {
     });
   };
 
-  // static async createAdmin(admin) {
-  //   try {
-  //     const response = await axios.post('/api/auth/register-admin', admin);
-  //     return response.data;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // }
+  static async deleteRoomFacility(token, id) {
+    return await axios.delete(`/api/room/facility/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+    });
+  };
 
+  static async deleteRoom(token, id) {
+    await axios.delete(`/api/room/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+    });
+  };
 
-  
+  static async updateRoom(token, roomId, room) {
+    await axios.put(`/api/room/${roomId}`, room, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  static async getUsers(token) {
+    return await axios.get('/api/user/', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async getUser(token, id) {
+    return await axios.get(`/api/user/id/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async deleteUser(token, id) {
+    await axios.delete(`/api/user/id/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async createAdmin(token, admin) {
+    return await axios.post('/api/auth/register-admin', admin, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  static async getRoom(token, roomId) {
+    return await axios.get(`/api/room/${roomId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  };
+
   static async getExtras() {
     return await axios.get('/api/extra/');
-  }
+  };
 
   static async getRooms() {
     return await axios.get('/api/room/');
-  }
+  };
 
   static async getRoomFacilities() {
     return await axios.get('/api/room/facility/');
-  }
+  };
 
 
 
   static isAuthenticated() {
     return !!localStorage.getItem('token');
-  }
+  };
 
   static isAdmin() {
     return localStorage.getItem('role') === 'ADMIN';
-  }
+  };
 
   static isUser() {
     return localStorage.getItem('role') === 'USER';
-  }
+  };
 
   static logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-  }
+  };
 }
 
 export default UserService;

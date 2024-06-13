@@ -10,7 +10,8 @@ import RegisterPage from './auth/RegisterPage';
 import ProfilePage from './general/ProfilePage';
 import RoomDetailsPage from './room/RoomDetailsPage';
 import FacilityDetailsPage from './extras/FacilityDetailsPage';
-import ManageRooms from './admin/ManageRooms';
+import ManageRooms from './admin/rooms/ManageRooms';
+import ManageUsers from './admin/users/ManageUsers';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       <Route path='/room/details' element={<RoomDetailsPage />} />
       <Route path='/facilities/details' element={<FacilityDetailsPage />}/>
       <Route path='/manage/rooms' element={<ManageRooms />}/>
+      <Route path='/manage/users' element={<ManageUsers />}/>
     </Route>
   ));
 

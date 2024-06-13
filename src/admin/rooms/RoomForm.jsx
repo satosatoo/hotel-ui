@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UserService from '../services/UserService';
+import UserService from '../../services/UserService';
 import { toast } from 'react-toastify';
 
 const RoomForm = ({ onRoomCreated }) => {

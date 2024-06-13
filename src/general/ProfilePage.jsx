@@ -196,12 +196,13 @@ const ProfilePage = () => {
       {UserService.isAdmin() ? (
         <div className="bg-dark-grey shadow-md rounded-lg p-6 mb-6 max-w-md w-full">
         <h2 className="text-2xl font-semibold mb-4 text-center">Admin Panel</h2>
-        {/* Admin Controls for managing rooms, amenities, etc. */}
         <div>
           <Link to='/manage/rooms' className='bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg'>
-            Manage rooms
+            Manage Rooms
           </Link>
-          {/* Add more admin controls as needed */}
+          <Link to='/manage/users' className='bg-custom-purple text-white duration-200 hover:bg-custom-purple-hover hover:text-indigo-200 font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full text-lg'>
+            Manage Users
+          </Link>
         </div>
       </div>
       ) : (

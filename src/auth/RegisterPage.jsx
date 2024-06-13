@@ -53,13 +53,9 @@ const RegisterPage = () => {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
       const data = await UserService.registerUser(formData);
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('role', data.role)
-        window.location.href = '/';
-      }else {
-        setErrors(data.message);
-      }
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('role', data.role)
+      window.location.href = '/';
       console.log('Form data submitted:', formData);
     } else {
       setErrors(validationErrors);
